@@ -51,7 +51,7 @@ class _MapMultiMarkerState extends State<MapMultiMarker> {
       "address": "SincApp_001",
       "id": "sincapp001",
       "image":
-          "https://i.pinimg.com/originals/b7/3a/13/b73a132e165978fa07c6abd2879b47a6.png",
+          "...",
       "lat": 41.087525,
       "lng": 28.951964,
       "name": "Haliç Üniversitesi-Sincap001",
@@ -62,7 +62,7 @@ class _MapMultiMarkerState extends State<MapMultiMarker> {
       "address": "SincApp_002",
       "id": "sincapp002",
       "image":
-          "https://upload.wikimedia.org/wikipedia/commons/9/96/Delhi_Red_fort.jpg",
+          "...",
       "lat": 41.087000,
       "lng": 28.952001,
       "name": "Haliç Üniversitesi-Sincap002",
