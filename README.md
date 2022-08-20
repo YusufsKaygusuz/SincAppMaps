@@ -1,4 +1,4 @@
-# SincAppMaps
+# From SincApp Maps
 Hi there👋. I'm SincApp Software Manager. I would be happy to present a part of our SincApp Application with you. In the application, we made a multi-point(📍) display on the map. We share it so that you can integrate it into your applications.
 
 <h3>Step By Step Roadmap</h3>
@@ -170,12 +170,11 @@ class _MapMultiMarkerState extends State<MapMultiMarker> {
 }
 
 
-▶️ Step8) Add this coding part to your application
-					   
+▶️ Step8) Add this coding part to your application				   
 
-  launchMap(lat, long) {
+  launchMap(lat, long) 
+		{
 					   
     MapsLauncher.launchCoordinates(lat, long);
-					   
-  }
+					   }
 	
