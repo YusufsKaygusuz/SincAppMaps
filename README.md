@@ -19,3 +19,5 @@ you should visit to https://pub.dev/ address to examine.
 	4. APIs & Services -> Enable APIs and services or API Library -> ENABLE BOTH ANDROID AND IOS SDK TO WORK WITH GOOGLE MAP IN YOU APP
 
 ![image](https://user-images.githubusercontent.com/86704802/185737450-c9e5f011-e456-491c-bf74-f4550e85ed82.png)
+![image](https://user-images.githubusercontent.com/86704802/185737551-14694f86-1dc9-4537-a195-730d1c2ed904.png)
+
