@@ -34,86 +34,148 @@ you should visit to https://pub.dev/ address to examine.
 ▶️ Step7) Add screen to show multimarker mapmultimarker.dart
 
 <h3>✴️Coding Part✴️</h3>
+<h3>--------------------------</h3>
 
 import 'package:flutter/material.dart';
+
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class MapMultiMarker extends StatefulWidget {
+
   const MapMultiMarker({Key? key}) : super(key: key);
+  
 
   @override
+  
   State<MapMultiMarker> createState() => _MapMultiMarkerState();
+	
 }
 
 class _MapMultiMarkerState extends State<MapMultiMarker> {
+	
   final List<Map<String, dynamic>> clityList = const [
+	
     {
+	
       "address": "SincApp_001",
+	
       "id": "sincapp001",
+	
       "image":
+	
           "...",
+	
       "lat": 41.087525,
+	
       "lng": 28.951964,
+	
       "name": "Haliç Üniversitesi-Sincap001",
+	
       "postCode": "34060",
+	
       "region": "European Side"
+	
     },
+	
     {
       "address": "SincApp_002",
+	
       "id": "sincapp002",
+	
       "image":
           "...",
+	
       "lat": 41.087000,
+	
       "lng": 28.952001,
+	
       "name": "Haliç Üniversitesi-Sincap002",
+	
       "phone": "34060",
+	
       "region": "European Side"
+	
     }
+	
   ];
+	
 
   final Map<String, Marker> _markers = {};
 
   Future<void> _onMapCreated(GoogleMapController controller) async {
+	
     _markers.clear();
+	
     setState(() {
+	
       for (int i = 0; i < clityList.length; i++) {
+					   
         print("For Loop");
+					   
         final marker = Marker(
+					   
           markerId: MarkerId(clityList[i]['name']),
+					   
           position: LatLng(clityList[i]['lat'], clityList[i]['lng']),
+					   
           infoWindow: InfoWindow(
+					   
               title: clityList[i]['name'],
+					   
               snippet: clityList[i]['address'],
+					   
               onTap: () {
+					   
                 print("${clityList[i]['lat']}, ${clityList[i]['lng']}");
+					   
               }),
+					   
           onTap: () {
+					   
             print("Clicked on marker");
+					   
           },
+					   
         );
+					   
         print("${clityList[i]['lat']}, ${clityList[i]['lng']}");
+					   
         _markers[clityList[i]['name']] = marker;
+					   
       }
     });
   }
 
+					   
   @override
+					   
   Widget build(BuildContext context) {
+					   
     return GoogleMap(
+					   
       onMapCreated: _onMapCreated,
+					   
       initialCameraPosition: const CameraPosition(
+					   
         target: LatLng(clityList[0]['lat'], clityList[0]['lng']),
+					   
         zoom: 4.8,
+					   
       ),
+					   
       markers: _markers.values.toSet(),
+					   
     );
   }
 }
 
 
 ▶️ Step8) Add this coding part to your application
+					   
 
   launchMap(lat, long) {
+					   
     MapsLauncher.launchCoordinates(lat, long);
+					   
   }
 	
