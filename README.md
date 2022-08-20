@@ -21,4 +21,101 @@ you should visit to https://pub.dev/ address to examine.
 
 ![image](https://user-images.githubusercontent.com/86704802/185737551-14694f86-1dc9-4537-a195-730d1c2ed904.png) <h4>After this step, your project is ready for flight. </h4>
 
+▶️ Step5) NOW Add your API KEY in your project accourding to document of google_maps_flutter 
+	1 for android ->android/app/src/main/AndroidManifest.xml: INSIDE  <application section
+	<meta-data android:name="com.google.android.geo.API_KEY"
+               android:value="YOUR KEY HERE"/>
+	2. for IOS see docs
+	
+▶️ Step6)  MUST DO THIS ->  must check you ext.kotlin_version must be  1.6.0 or 1.6.10 inside android\build.gradle: 
+			and defaultConfig {minSdkVersion 20 or 21}	inside android\app\build.gradle: 	
+	and  STOP your project and rerun it and
+	
+▶️ Step7) Add screen to show multimarker mapmultimarker.dart
 
+<h3>✴️Coding Part✴️</h3>
+
+import 'package:flutter/material.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
+
+class MapMultiMarker extends StatefulWidget {
+  const MapMultiMarker({Key? key}) : super(key: key);
+
+  @override
+  State<MapMultiMarker> createState() => _MapMultiMarkerState();
+}
+
+class _MapMultiMarkerState extends State<MapMultiMarker> {
+  final List<Map<String, dynamic>> clityList = const [
+    {
+      "address": "SincApp_001",
+      "id": "sincapp001",
+      "image":
+          "https://i.pinimg.com/originals/b7/3a/13/b73a132e165978fa07c6abd2879b47a6.png",
+      "lat": 41.087525,
+      "lng": 28.951964,
+      "name": "Haliç Üniversitesi-Sincap001",
+      "postCode": "34060",
+      "region": "European Side"
+    },
+    {
+      "address": "SincApp_002",
+      "id": "sincapp002",
+      "image":
+          "https://upload.wikimedia.org/wikipedia/commons/9/96/Delhi_Red_fort.jpg",
+      "lat": 41.087000,
+      "lng": 28.952001,
+      "name": "Haliç Üniversitesi-Sincap002",
+      "phone": "34060",
+      "region": "European Side"
+    }
+  ];
+
+  final Map<String, Marker> _markers = {};
+
+  Future<void> _onMapCreated(GoogleMapController controller) async {
+    _markers.clear();
+    setState(() {
+      for (int i = 0; i < clityList.length; i++) {
+        print("For Loop");
+        final marker = Marker(
+          markerId: MarkerId(clityList[i]['name']),
+          position: LatLng(clityList[i]['lat'], clityList[i]['lng']),
+          infoWindow: InfoWindow(
+              title: clityList[i]['name'],
+              snippet: clityList[i]['address'],
+              onTap: () {
+                print("${clityList[i]['lat']}, ${clityList[i]['lng']}");
+              }),
+          onTap: () {
+            print("Clicked on marker");
+          },
+        );
+        print("${clityList[i]['lat']}, ${clityList[i]['lng']}");
+        _markers[clityList[i]['name']] = marker;
+      }
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return GoogleMap(
+      onMapCreated: _onMapCreated,
+      initialCameraPosition: const CameraPosition(
+        target: LatLng(clityList[0]['lat'], clityList[0]['lng']),
+        zoom: 4.8,
+      ),
+      markers: _markers.values.toSet(),
+    );
+  }
+}
+
+
+▶️ Step8) Add this coding part to your application
+
+  launchMap(lat, long) {
+    MapsLauncher.launchCoordinates(lat, long);
+  }
+
+	
+	
