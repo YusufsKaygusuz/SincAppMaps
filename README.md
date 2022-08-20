@@ -116,6 +116,4 @@ class _MapMultiMarkerState extends State<MapMultiMarker> {
   launchMap(lat, long) {
     MapsLauncher.launchCoordinates(lat, long);
   }
-
-	
 	
