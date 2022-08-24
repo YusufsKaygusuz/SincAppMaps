@@ -36,26 +36,26 @@ you should visit to https://pub.dev/ address to examine.
 <h3>✴️Coding Part✴️</h3>
 <h3>--------------------------</h3>
 
-import 'package:flutter/material.dart';
+	import 'package:flutter/material.dart';
 
-import 'package:google_maps_flutter/google_maps_flutter.dart';
+	import 'package:google_maps_flutter/google_maps_flutter.dart';
 
-class MapMultiMarker extends StatefulWidget {
+	class MapMultiMarker extends StatefulWidget {
 
-  const MapMultiMarker({Key? key}) : super(key: key);
+  	const MapMultiMarker({Key? key}) : super(key: key);
   
 
-  @override
+  	@override
   
-  State<MapMultiMarker> createState() => _MapMultiMarkerState();
+  	State<MapMultiMarker> createState() => _MapMultiMarkerState();
 	
-}
+	}
 
-class _MapMultiMarkerState extends State<MapMultiMarker> {
+	class _MapMultiMarkerState extends State<MapMultiMarker> {
 	
-  final List<Map<String, dynamic>> clityList = const [
+  	final List<Map<String, dynamic>> clityList = const [
 	
-    {
+    	{
 	
       "address": "SincApp_001",
 	
@@ -97,18 +97,18 @@ class _MapMultiMarkerState extends State<MapMultiMarker> {
 	
     }
 	
-  ];
+  	];
 	
 
-  final Map<String, Marker> _markers = {};
+  	final Map<String, Marker> _markers = {};
 
-  Future<void> _onMapCreated(GoogleMapController controller) async {
+  	Future<void> _onMapCreated(GoogleMapController controller) async {
 	
-    _markers.clear();
+    	_markers.clear();
 	
-    setState(() {
+    	setState(() {
 	
-      for (int i = 0; i < clityList.length; i++) {
+      	for (int i = 0; i < clityList.length; i++) {
 					   
         print("For Loop");
 					   
@@ -143,15 +143,15 @@ class _MapMultiMarkerState extends State<MapMultiMarker> {
         _markers[clityList[i]['name']] = marker;
 					   
       }
-    });
-  }
+   	 });
+ 	 }
 
 					   
-  @override
+ 	 @override
 					   
-  Widget build(BuildContext context) {
+ 	 Widget build(BuildContext context) {
 					   
-    return GoogleMap(
+    	return GoogleMap(
 					   
       onMapCreated: _onMapCreated,
 					   
@@ -165,16 +165,16 @@ class _MapMultiMarkerState extends State<MapMultiMarker> {
 					   
       markers: _markers.values.toSet(),
 					   
-    );
-  }
-}
+    	);
+  	}
+	}
 
 
 ▶️ Step8) Add this coding part to your application				   
 
-  launchMap(lat, long) 
+  	launchMap(lat, long) 
 		{
 					   
-    MapsLauncher.launchCoordinates(lat, long);
+   	 MapsLauncher.launchCoordinates(lat, long);
 					   }
 	
