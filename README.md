@@ -5,9 +5,11 @@ Hi there👋. I'm SincApp Software Manager. I would be happy to present a part o
 
 ▶️ Step1) Create a project.
 
-▶️ Step2) Add required package in pubspec.yaml 
-	            google_maps_flutter: ^2.1.1
+▶️ Step2) Add required package in pubspec.yaml
+
+	          google_maps_flutter: ^2.1.1
   	          maps_launcher: ^2.0.1
+
 you should visit to https://pub.dev/ address to examine.
 
 ▶️ Step3) Now read documents of google_maps_flutter plugin and do reuired things to work with google map in Android and IOS
@@ -22,14 +24,42 @@ you should visit to https://pub.dev/ address to examine.
 ![image](https://user-images.githubusercontent.com/86704802/185737551-14694f86-1dc9-4537-a195-730d1c2ed904.png) <h4>After this step, your project is ready for flight. </h4>
 
 ▶️ Step5) NOW Add your API KEY in your project accourding to document of google_maps_flutter 
-	1 for android ->android/app/src/main/AndroidManifest.xml: INSIDE  <application section
-	<meta-data android:name="com.google.android.geo.API_KEY"
-               android:value="YOUR KEY HERE"/>
-	2. for IOS see docs
+	
+1 for android ->
+	
+			<manifest ...
+ 			<application ...
+    			<meta-data android:name="com.google.android.geo.API_KEY"
+              		android:value="YOUR KEY HERE"/>
+	
+2. Specify your API key in the application delegate ios/Runner/AppDelegate.swift:
+
+			import UIKit
+			import Flutter
+			import GoogleMaps
+
+			@UIApplicationMain
+			@objc class AppDelegate: FlutterAppDelegate {
+	  		override func application(
+    			_ application: UIApplication,
+	    		didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
+  			) -> Bool {
+   			 GMSServices.provideAPIKey("YOUR KEY HERE")
+    			GeneratedPluginRegistrant.register(with: self)
+    			return super.application(application, didFinishLaunchingWithOptions: launchOptions)
+  			}
+			}
 	
 ▶️ Step6)  MUST DO THIS ->  must check you ext.kotlin_version must be  1.6.0 or 1.6.10 inside android\build.gradle: 
-			and defaultConfig {minSdkVersion 20 or 21}	inside android\app\build.gradle: 	
-	and  STOP your project and rerun it and
+			Set the minSdkVersion in android/app/build.gradle:
+			
+			android {
+    			defaultConfig {
+        		minSdkVersion 20
+   	 		}
+			}
+			
+and  STOP your project and rerun it and
 	
 ▶️ Step7) Add screen to show multimarker mapmultimarker.dart
 
